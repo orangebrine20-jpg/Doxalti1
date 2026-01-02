@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doxalti Network | Official</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0c0c0c; color: white; margin: 0; overflow-x: hidden; }
+        .bebas { font-family: 'Bebas Neue', cursive; }
+        
+        #navMenu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #navMenu.active { display: flex; animation: fadeIn 0.3s ease; }
+
+        .page-section { display: none; padding-top: 120px; }
+        .page-section.active { display: block; animation: slideUp 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .rank-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 140, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .rank-card:hover {
+            border-color: #ff8c00;
+            transform: translateY(-8px);
+            background: rgba(255, 140, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[150] bg-black/40 backdrop-blur-md border-b border-white/5">
+        <div class="bebas text-3xl tracking-widest text-orange-500 cursor-pointer" onclick="changeSection('home')">DOXALTI</div>
+        <button onclick="toggleMenu()" class="w-12 h-12 flex items-center justify-center bg-orange-600 rounded-lg text-2xl text-white hover:bg-orange-500 transition shadow-lg">
+            ☰
+        </button>
+    </nav>
+
+    <div id="navMenu">
+        <button onclick="toggleMenu()" class="absolute top-8 right-8 text-5xl text-gray-500 hover:text-white">&times;</button>
+        <div class="flex flex-col gap-8 text-center">
+            <button onclick="changeSection('home')" class="bebas text-6xl hover:text-orange-500 transition tracking-tighter">HOME</button>
+            <button onclick="changeSection('store')" class="bebas text-6xl hover:text-orange-500 transition tracking-tighter">STORE</button>
+            <button onclick="openStaffModal()" class="bebas text-6xl hover:text-orange-500 transition tracking-tighter">APPLY FOR STAFF</button>
+            <a href="https://discord.gg/fMZdasb7" target="_blank" class="bebas text-6xl text-blue-500 hover:text-blue-400 transition tracking-tighter">DISCORD</a>
+        </div>
+    </div>
+
+    <section id="home" class="page-section active px-6">
+        <div class="max-w-5xl mx-auto text-center pt-10">
+            <h1 class="bebas text-8xl md:text-[11rem] leading-none mb-4">DOX<span class="text-orange-500">ALTI</span></h1>
+            <p class="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12">The ultimate Eaglercraft network. Redefining survival competition.</p>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <button onclick="changeSection('store')" class="w-full md:w-auto bg-orange-600 hover:bg-orange-500 text-white px-16 py-5 rounded-2xl font-black text-xl transition transform hover:scale-105 shadow-xl shadow-orange-900/40">OPEN STORE</button>
+                <a href="https://discord.gg/fMZdasb7" target="_blank" class="w-full md:w-auto bg-white/5 border border-white/10 hover:bg-white/10 px-16 py-5 rounded-2xl font-black text-xl transition text-center">JOIN DISCORD</a>
+            </div>
+            
+            <div class="mt-16 inline-block bg-black/60 border border-orange-500/20 px-8 py-3 rounded-full">
+                <span class="text-gray-400 text-xs uppercase tracking-[0.3em]">Server IP:</span>
+                <span class="text-orange-500 font-bold ml-2 uppercase">Doxalti.eagler.host</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="store" class="page-section px-6 pb-20">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="bebas text-7xl italic tracking-tighter mb-16 underline decoration-orange-500 underline-offset-8">SERVER RANKS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="rank-card rounded-3xl p-8 flex flex-col text-left">
+                    <h3 class="text-2xl font-bold mb-1">DOX</h3>
+                    <div class="text-4xl font-black text-orange-500 mb-6 text-center">$5</div>
+                    <ul class="text-gray-400 text-sm space-y-4 mb-12 flex-grow">
+                        <li>✔ [DOX] Prefix</li>
+                        <li>✔ 3 Home Slots</li>
+                        <li>✔ Colored Chat</li>
+                    </ul>
+                    <button onclick="openBuyModal('DOX', 5)" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white hover:text-black transition">PURCHASE</button>
+                </div>
+                <div class="rank-card rounded-3xl p-8 flex flex-col text-left border-orange-500/30">
+                    <h3 class="text-2xl font-bold mb-1">DOX+</h3>
+                    <div class="text-4xl font-black text-orange-500 mb-6 text-center">$10</div>
+                    <ul class="text-gray-400 text-sm space-y-4 mb-12 flex-grow">
+                        <li>✔ Everything in DOX</li>
+                        <li>✔ Priority Queue</li>
+                        <li>✔ Access to /fly</li>
+                    </ul>
+                    <button onclick="openBuyModal('DOX+', 10)" class="w-full py-4 bg-orange-600 rounded-2xl font-bold hover:bg-orange-500 transition shadow-lg shadow-orange-900/20">PURCHASE</button>
+                </div>
+                <div class="rank-card rounded-3xl p-8 flex flex-col text-left border-orange-500/60 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-1 text-orange-400">DOX++</h3>
+                    <div class="text-4xl font-black text-orange-500 mb-6 text-center">$20</div>
+                    <ul class="text-gray-300 text-sm space-y-4 mb-12 flex-grow">
+                        <li>✔ Everything in DOX+</li>
+                        <li>✔ Colored Nicknames</li>
+                        <li>✔ Particle Trails</li>
+                    </ul>
+                    <button onclick="openBuyModal('DOX++', 20)" class="w-full py-4 bg-orange-600 rounded-2xl font-bold hover:bg-orange-500 transition">PURCHASE</button>
+                </div>
+                <div class="rank-card rounded-3xl p-8 flex flex-col text-left bg-orange-600/10 border-orange-500">
+                    <h3 class="text-2xl font-bold mb-1">DOX+++</h3>
+                    <div class="text-4xl font-black text-orange-500 mb-6 text-center">$30</div>
+                    <ul class="text-white text-sm space-y-4 mb-12 flex-grow font-medium">
+                        <li class="text-orange-500 font-black">★ ALL PREVIOUS PERKS</li>
+                        <li>✔ Custom Join Message</li>
+                        <li>✔ Staff Priority Support</li>
+                    </ul>
+                    <button onclick="openBuyModal('DOX+++', 30)" class="w-full py-4 bg-white text-black rounded-2xl font-bold hover:bg-gray-200 transition">PURCHASE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="buyModal" class="fixed inset-0 z-[200] hidden items-center justify-center p-6 bg-black/90 backdrop-blur-xl">
+        <div class="bg-[#111] border border-white/10 w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl">
+            <h3 class="bebas text-5xl mb-2 text-orange-500 tracking-tighter">CHECKOUT</h3>
+            <p class="text-gray-400 mb-8 font-medium italic text-sm">Target Rank: <span id="modalRankName" class="text-white not-italic font-bold"></span></p>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-black uppercase text-gray-500 tracking-[0.2em] mb-3">Minecraft Username</label>
+                    <input type="text" id="mcName" placeholder="Enter Name..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-5 text-white outline-none focus:border-orange-500 transition text-lg">
+                </div>
+                <button onclick="confirmOrder()" class="w-full py-5 bg-orange-600 text-white font-black rounded-2xl hover:bg-orange-500 transition shadow-lg">PROCEED TO PAYMENT</button>
+                <button onclick="closeBuyModal()" class="w-full text-gray-500 font-bold text-sm">Go Back</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="staffModal" class="fixed inset-0 z-[200] hidden items-center justify-center p-6 bg-black/90 backdrop-blur-xl">
+        <div class="bg-[#111] border border-white/10 w-full max-w-lg rounded-[2.5rem] p-10 shadow-2xl text-center">
+            <h3 class="bebas text-5xl mb-4 text-orange-500 tracking-tighter">STAFF APPLICATIONS</h3>
+            <p class="text-gray-400 mb-8">We are looking for dedicated Helpers and Moderators to join the Doxalti team.</p>
+            <div class="bg-white/5 border border-white/10 p-6 rounded-3xl mb-8">
+                <p class="text-sm text-gray-300 mb-2 font-bold uppercase tracking-widest">How to apply:</p>
+                <p class="text-gray-400">Please join our Discord and open a <span class="text-white font-bold">#support-ticket</span> with the subject <span class="text-orange-500 font-bold">"Staff Application"</span>.</p>
+            </div>
+            <a href="https://discord.gg/fMZdasb7" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold hover:bg-blue-500 transition mb-4">JOIN DISCORD TO APPLY</a>
+            <br>
+            <button onclick="closeStaffModal()" class="text-gray-500 font-bold text-sm">Close Window</button>
+        </div>
+    </div>
+
+    <footer class="py-12 border-t border-white/5 text-center text-gray-600 text-[10px] tracking-[0.4em] uppercase">
+        <p>© 2026 DOXALTI NETWORK. NOT AFFILIATED WITH MOJANG AB.</p>
+    </footer>
+
+    <script>
+        const menu = document.getElementById('navMenu');
+        const buyModal = document.getElementById('buyModal');
+        const staffModal = document.getElementById('staffModal');
+        const mcInput = document.getElementById('mcName');
+        const rankSpan = document.getElementById('modalRankName');
+
+        function toggleMenu() { menu.classList.toggle('active'); }
+
+        function changeSection(id) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            menu.classList.remove('active');
+            window.scrollTo(0,0);
+        }
+
+        function openBuyModal(rank, price) {
+            rankSpan.innerText = rank + " ($" + price + ")";
+            buyModal.classList.remove('hidden');
+            buyModal.classList.add('flex');
+            mcInput.focus();
+        }
+
+        function closeBuyModal() {
+            buyModal.classList.add('hidden');
+            buyModal.classList.remove('flex');
+            mcInput.value = '';
+        }
+
+        function openStaffModal() {
+            staffModal.classList.remove('hidden');
+            staffModal.classList.add('flex');
+            menu.classList.remove('active');
+        }
+
+        function closeStaffModal() {
+            staffModal.classList.add('hidden');
+            staffModal.classList.remove('flex');
+        }
+
+        function confirmOrder() {
+            const name = mcInput.value.trim();
+            if(!name) return alert("Enter your name first!");
+            alert("Redirecting " + name + " to checkout...");
+            closeBuyModal();
+        }
+    </script>
+</body>
+</html>
